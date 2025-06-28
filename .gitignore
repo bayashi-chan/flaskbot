@@ -1,0 +1,5 @@
+venv/
+__pycache__/
+*.pyc
+questions.db
+.DS_Store

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Flask Q&A Bot</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="bot-area">
+    <img src="{{ url_for('static', filename='nou.png') }}" alt="AI Bot" class="bot-image">
+    <p class="bot-text">こんにちは！なにかご質問はありますか？🐟🧠</p>
+</div>
+
+<div class="bot-area">
+    <h1 style="color: black;">テスト表示</h1>
+    <img src="{{ url_for('static', filename='nou.png') }}" alt="AI Bot" class="bot-image">
+    <p class="bot-text">こんにちは！2つ目のエリアです！✨</p>
+</div>
+
+<form action="/ask" method="post" margin-top: 40px;>
+    <input type="text" name="user_input" placeholder="ご質問をどうぞ" required>
+    <button type="submit">送信</button>
+</form>
+
+</body>
+</html>

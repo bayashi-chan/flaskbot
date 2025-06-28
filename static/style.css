@@ -1,0 +1,12 @@
+.bot-area {
+    text-align: center;
+    margin-top: 40px;}
+
+    .bot-image {
+    width: 120px;
+    height: auto;
+    border-radius: 10px;}
+    
+    .bot-text {
+    font-size: 1.3em;
+    margin-top: 10px;}
