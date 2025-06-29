@@ -10,3 +10,30 @@
     .bot-text {
     font-size: 1.3em;
     margin-top: 10px;}
+
+    .btn-success {
+        background-color: #28a745; /* 緑系の背景 */
+        color: white;              /* 文字は白 */
+        padding: 10px 20px;        /* ボタンの内側の余白 */
+        border: none;              /* 枠線を消す */
+        border-radius: 5px;        /* 角を丸く */
+        font-size: 1em;
+        cursor: pointer;           /* ポインター表示 */
+        transition: background-color 0.3s ease;
+    }
+        
+    .btn-success:hover {
+        background-color: #218838; /* ホバー時に少し濃い緑 */
+    }
+
+    .form-container {
+        text-align: center; /* 中央揃え */
+        margin-top: 30px;
+    }
+
+    .bot-name {
+        font-size: 1.4em;
+        font-weight: bold;
+        text=align: center;
+        margin-bottom: 5px;
+    }
