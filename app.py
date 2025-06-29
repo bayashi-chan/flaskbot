@@ -34,5 +34,5 @@ def ask():
 
 if __name__ == '__main__':
     init_db()  # ← アプリ起動時にDB初期化
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
 
