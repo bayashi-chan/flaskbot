@@ -26,5 +26,15 @@
     </form>
 </div>   
 
+<!--この中に、すべての履歴が入る-->
+<div class="chat-history">
+    <!--Jinjaのfor文、質問と答え1つ1つの履歴をループして表示する-->
+    {% for q, a in history %}
+        <!--これはAIの返答を表示する-->
+        <div class="chat-bubble user">{{ q }}</div>
+        <div class="chat-bubble bot">{{ a }}</div>
+    {% endfor %}<!--endforはループの終了を示す。-->
+</div>
+
 </body>
 </html>

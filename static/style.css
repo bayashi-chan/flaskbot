@@ -37,3 +37,48 @@
         text=align: center;
         margin-bottom: 5px;
     }
+
+    .chat-bubble {
+        max-width: 60%;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 5px;
+        font-size: 1em;
+    }
+
+      /* ユーザーの発言は右寄せ＋青っぽい背景 */
+    .chat-bubble.user {
+        background-color: #d0f0ff;
+        text-align: left;
+        margin-left: auto;   /* 右に寄せる */
+        border-top-right-radius: 0;
+    }
+     /* 吹き出しのような形にしたい */
+    .chat-bubble.user::after {
+        content: "";
+        position: absolute;
+        right: -10px;
+        top: 10px;
+        border-width: 10px 0 10px 10px;
+        border-style: solid;
+        border-color: transparent transparent transparent #d0f0ff;
+    }
+
+      /* ボットの返答は左寄せ＋緑っぽい背景 */
+    .chat-bubble.bot {
+        background-color: #e6ffe6;
+        text-align: left;
+        margin-right: auto;  /* 左に寄せる */
+        border-top-left-radius: 0;
+    }
+    
+    .chat-bubble.bot::after {
+        content: "";
+        position: absolute;
+        left: -10px;
+        top: 10px;
+        border-width: 10px 10px 10px 0;
+        border-style: solid;
+        border-color: transparent #e6ffe6 transparent transparent;
+    }
+    
