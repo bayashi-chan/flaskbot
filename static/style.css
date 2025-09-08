@@ -46,6 +46,12 @@
         font-size: 1em;
     }
 
+    .chat-history {
+        max-width: 600px;     /* 最大幅を600pxに制限 */
+        margin: 0 auto;       /* 左右中央寄せ */
+        padding: 20px;        /* 少し内側に余白 */
+    }
+    
       /* ユーザーの発言は右寄せ＋青っぽい背景 */
     .chat-bubble.user {
         background-color: #d0f0ff;
