@@ -34,11 +34,12 @@
     .bot-name {
         font-size: 1.4em;
         font-weight: bold;
-        text=align: center;
+        text-align: center;
         margin-bottom: 5px;
     }
 
     .chat-bubble {
+        position: relative;
         max-width: 60%;
         padding: 10px;
         border-radius: 10px;
@@ -88,3 +89,21 @@
         border-color: transparent #e6ffe6 transparent transparent;
     }
     
+    .container {
+        display: flex;
+        height: 100vh;
+    }
+    
+    .sidebar {
+        width: 250px;
+        background-color: #f0f0f0;
+        padding: 20px;
+        overflow-y: auto;
+        border-right: 1px solid #ccc;
+    }
+    
+    .main {
+        flex: 1;
+        padding: 30px;
+        overflow-y: auto;
+    }
