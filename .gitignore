@@ -3,4 +3,35 @@ __pycache__/
 *.pyc
 questions.db
 .DS_Store
+
+# Node / React
+node_modules/
+build/
+dist/
+.next/
+.out/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+
+# Logs / DB / Secrets
+*.log
+*.sqlite3
+db.sqlite3
+.env
+*.env
+.env.*.local
+
+# OS / Editor
+.DS_Store
+.vscode/
+.idea/
+
+# Local Memo
 次回へのメモ

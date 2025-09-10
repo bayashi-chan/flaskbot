@@ -17,3 +17,11 @@
 
 ```bash
 python app.py
+
+
+
+VSCode の「Git: Untracked Changes = hidden」とは別物。
+.gitignore → Git 側で無視する（表示されない）
+hidden → VSCode 側で非表示にするだけ
+ただし、.gitignore が効くのは まだ Git に追加してないファイルだけ。すでに git add やコミットしてるものは、.gitignore に書いても消えない
+→ その場合は git rm --cached ファイル名 で「追跡解除」する必要あり。

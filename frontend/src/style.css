@@ -1,109 +1,167 @@
-.bot-area {
-    text-align: center;
-    margin-top: 40px;}
+/* ===== App Layout ===== */
+:root {
+    --bg: #f6f7fb;
+    --panel: #ffffff;
+    --primary: #22a35d;
+    --primary-dark: #1b8b4e;
+    --text: #243043;
+    --muted: #6b7280;
+    --shadow: 0 10px 25px rgba(0,0,0,.06);
+}
 
-    .bot-image {
-    width: 120px;
-    height: auto;
-    border-radius: 10px;}
-    
-    .bot-text {
-    font-size: 1.3em;
-    margin-top: 10px;}
+  * { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif; }
 
-    .btn-success {
-        background-color: #28a745; /* 緑系の背景 */
-        color: white;              /* 文字は白 */
-        padding: 10px 20px;        /* ボタンの内側の余白 */
-        border: none;              /* 枠線を消す */
-        border-radius: 5px;        /* 角を丸く */
-        font-size: 1em;
-        cursor: pointer;           /* ポインター表示 */
-        transition: background-color 0.3s ease;
-    }
-        
-    .btn-success:hover {
-        background-color: #218838; /* ホバー時に少し濃い緑 */
-    }
+  /* 2カラム */
+.container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    height: 100%;
+    padding: 24px;
+}
 
-    .form-container {
-        text-align: center; /* 中央揃え */
-        margin-top: 30px;
-    }
+  /* ===== Sidebar ===== */
+.sidebar {
+    background: var(--panel);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
 
-    .bot-name {
-        font-size: 1.4em;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 5px;
-    }
+.sidebar h3 {
+    display: flex; align-items: center; gap: 8px;
+    margin: 0 0 14px;
+    font-size: 1.05rem; color: var(--muted);
+}
 
-    .chat-bubble {
-        position: relative;
-        max-width: 60%;
-        padding: 10px;
-        border-radius: 10px;
-        margin: 5px;
-        font-size: 1em;
-    }
+  /* セッションボタン */
+.session-btn {
+    width: 100%;
+    appearance: none;
+    border: 0; outline: 0;
+    background: #eaf7ef;
+    color: #1d6e42;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: transform .03s ease, background .2s ease;
+}
+.session-btn + li .session-btn, .session-btn + .session-btn { margin-top: 10px; }
+.session-btn:hover { background: #dcf1e6; }
+.session-btn:active { transform: translateY(1px); }
 
-    .chat-history {
-        max-width: 600px;     /* 最大幅を600pxに制限 */
-        margin: 0 auto;       /* 左右中央寄せ */
-        padding: 20px;        /* 少し内側に余白 */
-    }
-    
-      /* ユーザーの発言は右寄せ＋青っぽい背景 */
-    .chat-bubble.user {
-        background-color: #d0f0ff;
-        text-align: left;
-        margin-left: auto;   /* 右に寄せる */
-        border-top-right-radius: 0;
-    }
-     /* 吹き出しのような形にしたい */
-    .chat-bubble.user::after {
-        content: "";
-        position: absolute;
-        right: -10px;
-        top: 10px;
-        border-width: 10px 0 10px 10px;
-        border-style: solid;
-        border-color: transparent transparent transparent #d0f0ff;
-    }
+  /* ===== Main ===== */
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
 
-      /* ボットの返答は左寄せ＋緑っぽい背景 */
-    .chat-bubble.bot {
-        background-color: #e6ffe6;
-        text-align: left;
-        margin-right: auto;  /* 左に寄せる */
-        border-top-left-radius: 0;
-    }
-    
-    .chat-bubble.bot::after {
-        content: "";
-        position: absolute;
-        left: -10px;
-        top: 10px;
-        border-width: 10px 10px 10px 0;
-        border-style: solid;
-        border-color: transparent #e6ffe6 transparent transparent;
-    }
-    
-    .container {
-        display: flex;
-        height: 100vh;
-    }
-    
-    .sidebar {
-        width: 250px;
-        background-color: #f0f0f0;
-        padding: 20px;
-        overflow-y: auto;
-        border-right: 1px solid #ccc;
-    }
-    
-    .main {
-        flex: 1;
-        padding: 30px;
-        overflow-y: auto;
-    }
+  /* ヘッダ */
+.app-header {
+    background: linear-gradient(180deg,#fff, #f9fafc);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 22px;
+    display: flex; align-items: center; gap: 18px;
+}
+.app-header h1 {
+    margin: 0;
+    font-size: clamp(28px, 3.2vw, 44px);
+    letter-spacing: .02em;
+}
+.app-header .sub {
+    color: var(--muted);
+    font-size: .95rem;
+}
+
+  /* チャットカード */
+.chat-card {
+    background: var(--panel);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 22px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    min-height: 480px;
+    height: calc(100vh - 220px);
+}
+
+  /* 履歴 */
+.chat-history {
+    overflow: auto;
+    padding-right: 6px;
+}
+
+  /* 吹き出し */
+.chat-entry { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.chat-bubble {
+    max-width: 70%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-size: 15px;
+    line-height: 1.5;
+    position: relative;
+    word-break: break-word;
+}
+.chat-bubble.user {
+    background: #e6f3ff;
+    margin-left: auto;
+    border-top-right-radius: 6px;
+}
+.chat-bubble.bot {
+    background: #eaf7ef;
+    border-top-left-radius: 6px;
+}
+
+  /* 入力バー（カード下部に固定） */
+.input-bar {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid #eef1f5;
+}
+.input-bar input {
+    height: 44px;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    outline: none;
+    font-size: 15px;
+}
+.input-bar input:focus { border-color: #b8e4c8; box-shadow: 0 0 0 3px #e7f6ee; }
+
+  /* ボタン */
+.btn-success {
+    background: var(--primary);
+    color: #fff;
+    border: 0;
+    height: 44px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .03s ease, background .2s ease, box-shadow .2s;
+    box-shadow: 0 6px 16px rgba(34,163,93,.25);
+}
+.btn-success:hover { background: var(--primary-dark); }
+.btn-success:active { transform: translateY(1px); }
+
+  /* 新規セッションボタン */
+.new-session { width: 260px; }
+
+  /* 画像と挨拶 */
+.bot-image { width: 96px; height: 96px; border-radius: 14px; display: block; }
+.hero-row { display: flex; align-items: center; gap: 16px; }
+
+  /* レスポンシブ */
+@media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; height: auto; }
+    .chat-card { height: auto; min-height: 60vh; }
+    .new-session { width: 100%; }
+    .chat-bubble { max-width: 85%; }
+}
