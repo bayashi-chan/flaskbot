@@ -100,6 +100,9 @@ def add_message(sid):
                 message={"role": "user", "content": q, "ts": ts},
                 reply={"role": "assistant", "content": ans, "ts": ts}), 201
 
+import os
+
 if __name__ == "__main__":
     init_db()
-    app.run(host="127.0.0.1", port=6060, debug=True, use_reloader=False)
+    port = int(os.getenv("PORT", "6060"))   # ← ローカルは6060、クラウドは$PORT
+    app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
