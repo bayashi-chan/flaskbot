@@ -34,10 +34,15 @@ db.sqlite3
 .idea/
 
 # Local Memo
-次回へのメモ
+次回へのメモ.md
+備忘録.md
 
 # Vite build cache
 frontend/.vite/
 
 # Environment files
 frontend/.env*
+
+# ignore all Japanese-named memo files
+\343*
+
