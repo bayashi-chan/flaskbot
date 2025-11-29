@@ -3,10 +3,12 @@ from flask_cors import CORS
 import sqlite3
 from datetime import datetime
 from pathlib import Path
+from rag.search import retrieve_answer
+import os
+import 
 
 app = Flask(__name__)
 CORS(app)  # 開発中は全許可にして詰まりを避ける
-
 DB = Path(__file__).with_name("questions.db")
 
 def get_conn():
@@ -92,7 +94,7 @@ def add_message(sid):
     q = (data.get("content") or data.get("q") or "").strip()
     if not q:
         return jsonify(ok=False, error="content required"), 400
-    ans, ts = f"（仮）あなたの質問: {q}", now_str()
+    ans = retrieve_answer(q) #ここに、RAGかLLMを入れればAIチャット化できる。#backend/ragの中にある、search.pyの中にretrieve_answerがある。
     with get_conn() as con:
         con.execute("INSERT INTO questions (user_input, answer, timestamp, session_id) VALUES (?,?,?,?)",
                     (q, ans, ts, sid))
@@ -100,7 +102,7 @@ def add_message(sid):
                 message={"role": "user", "content": q, "ts": ts},
                 reply={"role": "assistant", "content": ans, "ts": ts}), 201
 
-import os
+
 
 if __name__ == "__main__":
     init_db()

@@ -1,3 +1,7 @@
 flask==3.1.2
 flask-cors==6.0.1
 gunicorn==22.0.0
+chromadb
+openai
+python-dotenv #.envはアプリの設定を書いておく、ただのテキストファイルでその中にAPIキーとかPWのような機密情報を書く場所
+tiktoken  #文章をトークンに分割する専用ライブラリで、LLMが文章をどう細切れにするかを決める道具

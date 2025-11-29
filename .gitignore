@@ -35,3 +35,9 @@ db.sqlite3
 
 # Local Memo
 次回へのメモ
+
+# Vite build cache
+frontend/.vite/
+
+# Environment files
+frontend/.env*

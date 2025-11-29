@@ -11,12 +11,23 @@
 - Python
 - Flask
 - SQLite3
-- HTML/CSS
+- CSS
 
-## 実行方法（ローカル）
+## 実行環境について
+-　
 
 ```bash
 python app.py
+
+## pythonファイルの補足
+app.py …… 受付の人。Reactから質問を受け取って、search.pyに投げる。結果をLLMに投げる。返事をReactに返す。
+search.py …… 資料室に検索依頼して、app.pyにデータを返している。
+embed.py …… 文章を機械が読める形に変換する人。ベクトルに変換する作業
+vector_store.py …… 資料室そのもの（ChromaDB）、ベクトルを保存する。
+
+##　なぜbackendとragをフォルダで分けるのか。
+分けないと、pyファイルがbackend直下に沢山できてしまい、どのpyファイルが役割ごちゃごちゃで入ってしまい、わかりにくい。
+だからこそ、app.pyのAPI受付とragのAIの裏側処理を分けている。
 
 
 
@@ -37,3 +48,16 @@ proxy（プロキシ）＝フロントとキッチンをつなぐ裏口トンネ
 
 gcloud CLI の環境って？
 ざっくり言うと 「ターミナルから Google Cloud を操作できる道具が揃った状態
+→googleアカウントにログインして、GCPを利用して発行されたプロジェクトIDとか使ったり、リージョン選択をする。
+cd ~/Desktop/chatbot-portfolio
+gcloud auth login　　　　　　　　　　　　　　　　　　 # これ打つと、ログインを要求される 
+gcloud config set project <YOUR_PROJECT_ID>　　 # GCPのコンソールいって、発行されたIDを確かめる
+gcloud config set run/region asia-northeast1   # 東京
+npm i -g firebase-tools
+firebase login
+
+Firebase = GCP の“フロントエンド寄り”サービスセット
+GCP = より汎用的・本格的なクラウド基盤
+
+SQ Liteは、Cloud Run 上では保存が消える/不安定（再デプロイやスケールでファイル消失・インスタンスごとに別DB）なので、READMEに「デモ用・データは消えることがある
+永続化したいなら Cloud SQL（Postgres or MySQL）へ移行すべし。
